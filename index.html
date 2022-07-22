@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Bài tập AXIOS 11-12</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark nav_left">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">Cybersoft</a>
+
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">From</a>
+                </li>
+
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Sport
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Link 1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
+                    </div>
+                </li>
+                <input class="form-control col-4" id="tuKhoa" placeholder="Nhập tên sản phẩm" />
+                <button class="btn btn-success ml-2 " id="btnTimKiem">Tìm kiếm</button>
+            </ul>
+            <p id="err_notfind" class="text text-danger text-center"></p>
+        </nav>
+    </header>
+    <div class="container m-5 ">
+        <h3 class=" text text-warning bg-dark p-2">PRODUCT INFO</h3>
+        <div class="row">
+            <div class="form-group col-6">
+                <div class="form-group">
+                    <p> ID </p>
+                    <input class="form-control" id="product_id" placeholder="product id" />
+                    <p class="text-danger" id="error_required_id"></p>
+                </div>
+                <div class="form-group">
+                    <p>Name</p>
+                    <input class="form-control" id="product_name" placeholder="product name" />
+                    <p class="text-danger" id="error_required_name"></p>
+                </div>
+                <div class="form-group">
+                    <p>Price</p>
+                    <input class="form-control" id="product_price" placeholder="product price" />
+                    <p id="error_required_price" class="text text-danger"></p>
+                </div>
+            </div>
+
+
+            <div class="form-group col-6">
+                <div class="form-group">
+                    <p>Image</p>
+                    <input class="form-control" id="product_image_link" placeholder="product image link" />
+                    <p class="text-danger" id="error_image"></p>
+                </div>
+                <div class="form-group">
+                    <p>ProductType</p>
+                    <select class="form-control" id="product_type">
+                        <option>Mobie</option>
+                        <option>Laptop</option>
+                        <option>Tablet</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <p>Description</p>
+                    <input class="form-control" id="product_description" placeholder="product_description"
+                        type="text" />
+                    <p class="text-danger" id="error_product_description"></p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group text-center">
+            <button id="btnKhoiTao" class="btn btn-success">Create</button>
+            <button id="btnCapNhat" class="btn btn-primary ml-4">Update</button>
+        </div>
+        <!-- <div class="form-group">
+            <p>Loại sản phẩm cần tìm</p>
+            <select class="form-control col-4" id="form_chon">
+                <option value="11">Mobie</option>
+                <option value="12">Laptop</option>
+                <option value="13">Tablet</option>
+            </select>
+        </div> -->
+        <div class="mt-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text text-warning bg-secondary">ID</th>
+                        <th class="text text-warning bg-secondary">Image</th>
+                        <th class="text text-warning bg-secondary">Name</th>
+                        <th class="text text-warning bg-secondary">Price</th>
+                        <th class="text text-warning bg-secondary">Description</th>
+                        <th class="text text-warning bg-secondary">Type</th>
+                        <th class="text text-warning bg-secondary"></th>
+                        <th class="text text-warning bg-secondary"></th>
+                    </tr>
+                </thead>
+                <tbody id="tblSanPham">
+                    <!-- <tr>
+                        <td id="">1</td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
+        integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <!--models-->
+    <script src="./product.js"></script>
+
+    <!--controller-->
+    <!-- <script src="./controllers/index.js"></script> -->
+    <script src="./indexAjax.js"></script>
+
+</body>
+
+</html>
